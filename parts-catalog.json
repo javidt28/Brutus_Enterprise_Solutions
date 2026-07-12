@@ -192,10 +192,10 @@
   {
     "id": "DT-001",
     "partNumber": "BES-AMS-PRO",
-    "name": "Asset Management Platform License",
+    "name": "MaintainHub Platform",
     "category": "digital",
     "manufacturer": "Brutus Enterprise",
-    "description": "Digital platform for infrastructure asset tracking and maintenance planning.",
+    "description": "MaintainHub CMMS for work orders, preventive maintenance, asset tracking, and multi-property operations.",
     "availability": "In Stock",
     "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
   }

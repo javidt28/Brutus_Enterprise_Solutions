@@ -74,6 +74,8 @@ function buildCatalogRow(part) {
     const availabilityClass = part.availability === 'In Stock' ? 'in-stock' : 'order';
     const icon = categoryIcons[part.category] || categoryIcons.automotive;
 
+    const isMaintainHub = part.partNumber === 'BES-AMS-PRO';
+
     return `
         <article class="parts-row">
             <div class="parts-row-icon">${icon}</div>
@@ -91,7 +93,9 @@ function buildCatalogRow(part) {
                 <p class="parts-row-desc">${escapeHtml(part.description)}</p>
             </div>
             <div class="parts-row-action">
-                <a href="index.html#contact" class="btn btn-secondary">Request Quote</a>
+                ${isMaintainHub
+                    ? '<a href="https://www.maintainhub.co/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit MaintainHub</a>'
+                    : '<a href="index.html#contact" class="btn btn-secondary">Request Quote</a>'}
             </div>
         </article>
     `;
