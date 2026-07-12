@@ -6,7 +6,8 @@
     "category": "automotive",
     "manufacturer": "Wagner",
     "description": "Premium ceramic brake pads for passenger vehicles. Low dust, quiet operation.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1625047509168-a7026f36de42?w=600&h=400&fit=crop"
   },
   {
     "id": "AP-002",
@@ -15,7 +16,8 @@
     "category": "automotive",
     "manufacturer": "Toyota OEM",
     "description": "Genuine OEM oil filter compatible with Toyota/Lexus 4-cylinder engines.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&h=400&fit=crop"
   },
   {
     "id": "AP-003",
@@ -24,7 +26,8 @@
     "category": "automotive",
     "manufacturer": "Denso",
     "description": "Remanufactured alternator for light trucks and SUVs.",
-    "availability": "Available to Order"
+    "availability": "Available to Order",
+    "image": "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&h=400&fit=crop"
   },
   {
     "id": "AP-004",
@@ -33,7 +36,8 @@
     "category": "automotive",
     "manufacturer": "FRAM",
     "description": "High-flow engine air filter for improved filtration and airflow.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1619642751034-765df74d7a28?w=600&h=400&fit=crop"
   },
   {
     "id": "AP-005",
@@ -42,7 +46,8 @@
     "category": "automotive",
     "manufacturer": "KYB",
     "description": "Complete strut assembly with spring for front suspension replacement.",
-    "availability": "Available to Order"
+    "availability": "Available to Order",
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop"
   },
   {
     "id": "SP-001",
@@ -51,7 +56,8 @@
     "category": "solar-hvac",
     "manufacturer": "SMA",
     "description": "5 kW single-phase solar inverter with integrated rapid shutdown.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&h=400&fit=crop"
   },
   {
     "id": "SP-002",
@@ -60,7 +66,8 @@
     "category": "solar-hvac",
     "manufacturer": "Canadian Solar",
     "description": "High-efficiency bifacial PV module for commercial rooftops.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop"
   },
   {
     "id": "SP-003",
@@ -69,7 +76,8 @@
     "category": "solar-hvac",
     "manufacturer": "Mitsubishi",
     "description": "Ductless mini-split system for residential heating and cooling.",
-    "availability": "Available to Order"
+    "availability": "Available to Order",
+    "image": "https://images.unsplash.com/photo-1631545806609-36f1c1e6b2e2?w=600&h=400&fit=crop"
   },
   {
     "id": "SP-004",
@@ -78,7 +86,8 @@
     "category": "solar-hvac",
     "manufacturer": "Enphase",
     "description": "Grid-forming microinverter with burst mode technology.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1558449028-b5a07eec270f?w=600&h=400&fit=crop"
   },
   {
     "id": "EV-001",
@@ -87,7 +96,8 @@
     "category": "ev-charging",
     "manufacturer": "ChargePoint",
     "description": "Level 2 adjustable 16–50A home EV charger with WiFi.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938b7?w=600&h=400&fit=crop"
   },
   {
     "id": "EV-002",
@@ -96,7 +106,8 @@
     "category": "ev-charging",
     "manufacturer": "Tesla",
     "description": "Up to 48A hardwired home charging station.",
-    "availability": "Available to Order"
+    "availability": "Available to Order",
+    "image": "https://images.unsplash.com/photo-1662564756650-e94fdbf96339?w=600&h=400&fit=crop"
   },
   {
     "id": "EV-003",
@@ -105,7 +116,8 @@
     "category": "ev-charging",
     "manufacturer": "Enel X",
     "description": "Commercial-grade 48A Level 2 charger with load balancing.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1645506723374-1f7aa6a13b05?w=600&h=400&fit=crop"
   },
   {
     "id": "ES-001",
@@ -114,7 +126,8 @@
     "category": "energy-storage",
     "manufacturer": "Tesla",
     "description": "13.5 kWh integrated home battery with solar inverter.",
-    "availability": "Available to Order"
+    "availability": "Available to Order",
+    "image": "https://images.unsplash.com/photo-1624397640148-949b1732bb0a?w=600&h=400&fit=crop"
   },
   {
     "id": "ES-002",
@@ -123,7 +136,8 @@
     "category": "energy-storage",
     "manufacturer": "LG Energy Solution",
     "description": "9.6 kWh residential energy storage system.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1611288588376-f28077be0ebf?w=600&h=400&fit=crop"
   },
   {
     "id": "ES-003",
@@ -132,7 +146,8 @@
     "category": "energy-storage",
     "manufacturer": "BYD",
     "description": "5.1 kWh modular high-voltage battery module.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1617788138017-80ad10651351?w=600&h=400&fit=crop"
   },
   {
     "id": "HA-001",
@@ -141,7 +156,8 @@
     "category": "appliances",
     "manufacturer": "Samsung",
     "description": "Energy Star certified smart refrigerator with dual ice makers.",
-    "availability": "Available to Order"
+    "availability": "Available to Order",
+    "image": "https://images.unsplash.com/photo-1571175443880-49d1ba25898a?w=600&h=400&fit=crop"
   },
   {
     "id": "HA-002",
@@ -150,7 +166,8 @@
     "category": "appliances",
     "manufacturer": "LG",
     "description": "High-efficiency washer with AI fabric sensors.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1626806780451-1b1b645c2f1b?w=600&h=400&fit=crop"
   },
   {
     "id": "AC-001",
@@ -159,7 +176,8 @@
     "category": "solar-hvac",
     "manufacturer": "Trane",
     "description": "High-efficiency split-system air conditioner, 17 SEER2.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1585771724954-e2609d027ed8?w=600&h=400&fit=crop"
   },
   {
     "id": "AC-002",
@@ -168,7 +186,8 @@
     "category": "solar-hvac",
     "manufacturer": "Brutus Enterprise",
     "description": "Branded inverter air conditioning system for commercial spaces.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1631545806609-36f1c1e6b2e2?w=600&h=400&fit=crop"
   },
   {
     "id": "DT-001",
@@ -177,6 +196,7 @@
     "category": "digital",
     "manufacturer": "Brutus Enterprise",
     "description": "Digital platform for infrastructure asset tracking and maintenance planning.",
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
   }
 ]

@@ -31,7 +31,8 @@ def search_parts():
 
     try:
         with DDGS() as ddgs:
-            results = list(ddgs.text(f"{search_query} buy", max_results=max_results))
+            text_results = list(ddgs.text(f"{search_query} buy", max_results=max_results))
+            image_results = list(ddgs.images(f"{search_query} product", max_results=6))
     except Exception as exc:
         return jsonify({"error": "Web search temporarily unavailable", "detail": str(exc)}), 503
 
@@ -43,7 +44,18 @@ def search_parts():
                 "url": item.get("href", ""),
                 "snippet": item.get("body", ""),
             }
-            for item in results
+            for item in text_results
+        ],
+        "images": [
+            {
+                "title": item.get("title", ""),
+                "url": item.get("url", ""),
+                "image": item.get("image") or item.get("thumbnail", ""),
+                "thumbnail": item.get("thumbnail") or item.get("image", ""),
+                "source": item.get("source", ""),
+            }
+            for item in image_results
+            if item.get("image") or item.get("thumbnail")
         ],
     })
 

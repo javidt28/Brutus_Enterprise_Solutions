@@ -88,11 +88,13 @@
         <section class="parts-results-section">
             <div class="container">
                 <div class="parts-empty" id="partsEmpty">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-                    </svg>
-                    <h2>Start your search</h2>
-                    <p>Enter a part number, product name, or keyword to search our catalog and the web.</p>
+                    <div class="parts-browse" id="partsBrowse">
+                        <div class="parts-browse-header">
+                            <h2>Browse Our Catalog</h2>
+                            <p>Popular parts across automotive, energy, and industrial categories</p>
+                        </div>
+                        <div class="parts-grid parts-browse-grid" id="browseGrid"></div>
+                    </div>
                 </div>
 
                 <div class="parts-results" id="partsResults" hidden>
@@ -104,12 +106,21 @@
                         <div class="parts-grid" id="catalogResults"></div>
                     </div>
 
+                    <div class="parts-results-block" id="webImagesBlock" hidden>
+                        <div class="parts-results-header">
+                            <h2>Product Images</h2>
+                            <span class="parts-count" id="webImagesCount">0 images</span>
+                        </div>
+                        <p class="parts-web-note">Visual matches from across the web for your search.</p>
+                        <div class="parts-image-gallery" id="webImages"></div>
+                    </div>
+
                     <div class="parts-results-block" id="webResultsBlock">
                         <div class="parts-results-header">
                             <h2>Web Results</h2>
                             <span class="parts-count" id="webCount">0 results</span>
                         </div>
-                        <p class="parts-web-note" id="webNote">Sourced from public web search to help you find suppliers and listings online.</p>
+                        <p class="parts-web-note" id="webNote">Supplier listings and product pages found online.</p>
                         <div class="parts-web-list" id="webResults"></div>
                         <div class="parts-fallback" id="webFallback" hidden>
                             <p>Live web search requires the app server. You can also search directly on:</p>
