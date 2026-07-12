@@ -1,0 +1,182 @@
+[
+  {
+    "id": "AP-001",
+    "partNumber": "D1212",
+    "name": "Ceramic Brake Pad Set (Front)",
+    "category": "automotive",
+    "manufacturer": "Wagner",
+    "description": "Premium ceramic brake pads for passenger vehicles. Low dust, quiet operation.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "AP-002",
+    "partNumber": "04152-YZZA1",
+    "name": "Engine Oil Filter",
+    "category": "automotive",
+    "manufacturer": "Toyota OEM",
+    "description": "Genuine OEM oil filter compatible with Toyota/Lexus 4-cylinder engines.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "AP-003",
+    "partNumber": "332-5289",
+    "name": "Alternator 140A",
+    "category": "automotive",
+    "manufacturer": "Denso",
+    "description": "Remanufactured alternator for light trucks and SUVs.",
+    "availability": "Available to Order"
+  },
+  {
+    "id": "AP-004",
+    "partNumber": "SP581",
+    "name": "Air Filter Panel",
+    "category": "automotive",
+    "manufacturer": "FRAM",
+    "description": "High-flow engine air filter for improved filtration and airflow.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "AP-005",
+    "partNumber": "KYB-349105",
+    "name": "Front Strut Assembly",
+    "category": "automotive",
+    "manufacturer": "KYB",
+    "description": "Complete strut assembly with spring for front suspension replacement.",
+    "availability": "Available to Order"
+  },
+  {
+    "id": "SP-001",
+    "partNumber": "SB5.0-1SP-US-41",
+    "name": "Sunny Boy 5.0-US Inverter",
+    "category": "solar-hvac",
+    "manufacturer": "SMA",
+    "description": "5 kW single-phase solar inverter with integrated rapid shutdown.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "SP-002",
+    "partNumber": "CS3W-420PB-AG",
+    "name": "420W Bifacial Solar Panel",
+    "category": "solar-hvac",
+    "manufacturer": "Canadian Solar",
+    "description": "High-efficiency bifacial PV module for commercial rooftops.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "SP-003",
+    "partNumber": "M4-1.25-1140BB",
+    "name": "Mini-Split Heat Pump 12K BTU",
+    "category": "solar-hvac",
+    "manufacturer": "Mitsubishi",
+    "description": "Ductless mini-split system for residential heating and cooling.",
+    "availability": "Available to Order"
+  },
+  {
+    "id": "SP-004",
+    "partNumber": "IQ8PLUS-72-M-US",
+    "name": "IQ8+ Microinverter",
+    "category": "solar-hvac",
+    "manufacturer": "Enphase",
+    "description": "Grid-forming microinverter with burst mode technology.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "EV-001",
+    "partNumber": "CPH50-P",
+    "name": "ChargePoint Home Flex",
+    "category": "ev-charging",
+    "manufacturer": "ChargePoint",
+    "description": "Level 2 adjustable 16–50A home EV charger with WiFi.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "EV-002",
+    "partNumber": "TWC-80-A-4",
+    "name": "Wall Connector Gen 3",
+    "category": "ev-charging",
+    "manufacturer": "Tesla",
+    "description": "Up to 48A hardwired home charging station.",
+    "availability": "Available to Order"
+  },
+  {
+    "id": "EV-003",
+    "partNumber": "JUICE-BOX-48",
+    "name": "JuiceBox 48 Smart Charger",
+    "category": "ev-charging",
+    "manufacturer": "Enel X",
+    "description": "Commercial-grade 48A Level 2 charger with load balancing.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "ES-001",
+    "partNumber": "PW3-13.5KWH",
+    "name": "Powerwall 3 Battery",
+    "category": "energy-storage",
+    "manufacturer": "Tesla",
+    "description": "13.5 kWh integrated home battery with solar inverter.",
+    "availability": "Available to Order"
+  },
+  {
+    "id": "ES-002",
+    "partNumber": "RESU10H",
+    "name": "RESU10H Prime Battery",
+    "category": "energy-storage",
+    "manufacturer": "LG Energy Solution",
+    "description": "9.6 kWh residential energy storage system.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "ES-003",
+    "partNumber": "BYD-HVS-5.1",
+    "name": "Battery-Box HVS Module",
+    "category": "energy-storage",
+    "manufacturer": "BYD",
+    "description": "5.1 kWh modular high-voltage battery module.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "HA-001",
+    "partNumber": "RF28R7201SR",
+    "name": "French Door Refrigerator 28 cu ft",
+    "category": "appliances",
+    "manufacturer": "Samsung",
+    "description": "Energy Star certified smart refrigerator with dual ice makers.",
+    "availability": "Available to Order"
+  },
+  {
+    "id": "HA-002",
+    "partNumber": "WM4000HWA",
+    "name": "Front Load Washer 4.5 cu ft",
+    "category": "appliances",
+    "manufacturer": "LG",
+    "description": "High-efficiency washer with AI fabric sensors.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "AC-001",
+    "partNumber": "XR17-036",
+    "name": "XR17 Central AC 3 Ton",
+    "category": "solar-hvac",
+    "manufacturer": "Trane",
+    "description": "High-efficiency split-system air conditioner, 17 SEER2.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "AC-002",
+    "partNumber": "BES-AC-24000",
+    "name": "Brutus Pro Series AC 24K BTU",
+    "category": "solar-hvac",
+    "manufacturer": "Brutus Enterprise",
+    "description": "Branded inverter air conditioning system for commercial spaces.",
+    "availability": "In Stock"
+  },
+  {
+    "id": "DT-001",
+    "partNumber": "BES-AMS-PRO",
+    "name": "Asset Management Platform License",
+    "category": "digital",
+    "manufacturer": "Brutus Enterprise",
+    "description": "Digital platform for infrastructure asset tracking and maintenance planning.",
+    "availability": "In Stock"
+  }
+]

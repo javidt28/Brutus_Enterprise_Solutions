@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search automotive, solar, HVAC, EV charging, and energy storage parts. Browse our catalog or find suppliers across the web.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f766e">
+    <title>Parts Search | Brutus Enterprise Solutions</title>
+    <link rel="icon" type="image/png" href="Brutus-Enterprise-Solutions-logo1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="Brutus-Enterprise-Solutions-logo1.png" alt="Brutus Enterprise Solutions" class="logo-img">
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#services" class="nav-link">Solutions</a></li>
+                    <li><a href="parts.html" class="nav-link active">Parts</a></li>
+                    <li><a href="index.html#sustainability" class="nav-link">Sustainability</a></li>
+                </ul>
+                <div class="nav-utility">
+                    <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main" class="parts-page">
+        <section class="parts-hero">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Parts Catalog</span>
+                    <h1 class="section-title">Find the Parts You Need</h1>
+                    <p class="section-subtitle">Search our sourcing catalog and discover suppliers across the web for automotive, energy, HVAC, and industrial components.</p>
+                </div>
+
+                <form class="parts-search-form" id="partsSearchForm">
+                    <div class="parts-search-bar">
+                        <svg class="parts-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        <input type="search" id="partsQuery" name="q" placeholder="Search by part number, name, or keyword…" autocomplete="off" required>
+                        <button type="submit" class="btn btn-primary" id="partsSearchBtn">
+                            <span class="btn-text">Search</span>
+                            <span class="btn-loader" style="display: none;">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                                        <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416;0 31.416" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416;-31.416" repeatCount="indefinite"/>
+                                    </circle>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="parts-filters">
+                        <label for="partsCategory">Category</label>
+                        <select id="partsCategory" name="category">
+                            <option value="all">All Categories</option>
+                            <option value="automotive">Automotive</option>
+                            <option value="solar-hvac">Solar & HVAC</option>
+                            <option value="ev-charging">EV Charging</option>
+                            <option value="energy-storage">Energy Storage</option>
+                            <option value="appliances">Appliances</option>
+                            <option value="digital">Digital Technologies</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="parts-results-section">
+            <div class="container">
+                <div class="parts-empty" id="partsEmpty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <h2>Start your search</h2>
+                    <p>Enter a part number, product name, or keyword to search our catalog and the web.</p>
+                </div>
+
+                <div class="parts-results" id="partsResults" hidden>
+                    <div class="parts-results-block" id="catalogResultsBlock">
+                        <div class="parts-results-header">
+                            <h2>Our Catalog</h2>
+                            <span class="parts-count" id="catalogCount">0 results</span>
+                        </div>
+                        <div class="parts-grid" id="catalogResults"></div>
+                    </div>
+
+                    <div class="parts-results-block" id="webResultsBlock">
+                        <div class="parts-results-header">
+                            <h2>Web Results</h2>
+                            <span class="parts-count" id="webCount">0 results</span>
+                        </div>
+                        <p class="parts-web-note" id="webNote">Sourced from public web search to help you find suppliers and listings online.</p>
+                        <div class="parts-web-list" id="webResults"></div>
+                        <div class="parts-fallback" id="webFallback" hidden>
+                            <p>Live web search requires the app server. You can also search directly on:</p>
+                            <div class="parts-fallback-links" id="fallbackLinks"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="parts-no-results" id="partsNoResults" hidden>
+                    <h2>No results found</h2>
+                    <p>Try a different keyword or part number, or <a href="index.html#contact">contact us</a> and we'll source it for you.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="parts-cta">
+            <div class="container">
+                <div class="parts-cta-inner">
+                    <div>
+                        <h2>Can't find what you're looking for?</h2>
+                        <p>Our sourcing team can locate hard-to-find parts through our global supplier network.</p>
+                    </div>
+                    <a href="index.html#contact" class="btn btn-primary">Request Sourcing Help</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="Brutus-Enterprise-Solutions-logo1.png" alt="Brutus Enterprise Solutions" class="footer-logo">
+                    <p>Sustainable sourcing and technology for a better tomorrow.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="parts.html">Parts</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li>Automotive Parts</li>
+                        <li>Solar & HVAC</li>
+                        <li>EV Charging</li>
+                        <li>Energy Storage</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <span>·</span>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                </div>
+                <p>&copy; <span id="copyrightYear">2024</span> Brutus Enterprise Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="parts.js"></script>
+</body>
+</html>
