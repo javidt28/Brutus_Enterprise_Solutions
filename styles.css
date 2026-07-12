@@ -1275,7 +1275,15 @@ section {
     .parts-search-bar .btn { width: 100%; }
     .parts-filters { flex-direction: column; align-items: stretch; }
     .parts-image-gallery { grid-template-columns: repeat(2, 1fr); }
-    .parts-grid { grid-template-columns: 1fr; }
+    .parts-row {
+        grid-template-columns: auto 1fr;
+    }
+    .parts-row-action {
+        grid-column: 1 / -1;
+    }
+    .parts-row-action .btn {
+        width: 100%;
+    }
 }
 
 /* Parts Page */
@@ -1354,25 +1362,83 @@ section {
     min-height: 300px;
 }
 
-.parts-browse-header {
+.parts-landing {
     text-align: center;
-    margin-bottom: 2rem;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
 }
 
-.parts-browse-header h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
+.parts-landing-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    background: var(--primary-50);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.parts-landing-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.parts-landing h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
     color: var(--navy);
     margin-bottom: 0.5rem;
 }
 
-.parts-browse-header p {
+.parts-landing p {
     color: var(--slate-500);
     font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 
-.parts-browse-grid {
-    margin-top: 0.5rem;
+.parts-suggestions-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate-400);
+    margin-bottom: 0.75rem;
+}
+
+.parts-suggestion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.parts-chip {
+    padding: 0.5rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--slate-300);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--slate-600);
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: inherit;
+}
+
+.parts-chip:hover {
+    border-color: var(--primary);
+    color: var(--primary-dark);
+    background: var(--primary-50);
+}
+
+.parts-chip:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .parts-results-block {
@@ -1415,81 +1481,104 @@ section {
     gap: 1.5rem;
 }
 
-.parts-card {
+.parts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.parts-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.25rem;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
     background: var(--white);
     border: 1px solid var(--slate-200);
     border-radius: var(--radius-xl);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.parts-card:hover {
+.parts-row:hover {
     border-color: var(--primary-200);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
-}
-
-.parts-card-clickable {
-    cursor: pointer;
-    text-align: left;
-    font: inherit;
-    width: 100%;
-    padding: 0;
-}
-
-.parts-card-clickable:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-}
-
-.parts-card-media {
-    position: relative;
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-    background: var(--slate-100);
-}
-
-.parts-card-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.parts-card:hover .parts-card-media img {
-    transform: scale(1.05);
-}
-
-.parts-card-media .parts-category {
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--primary-dark);
-    background: rgba(255, 255, 255, 0.95);
-    padding: 0.25rem 0.625rem;
-    border-radius: var(--radius-full);
     box-shadow: var(--shadow-sm);
 }
 
-.parts-card-body {
-    padding: 1.25rem;
+.parts-row-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-50);
+    border-radius: var(--radius-lg);
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
 }
 
-.parts-card-top {
+.parts-row-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.parts-row-main {
+    min-width: 0;
+}
+
+.parts-row-top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    margin-bottom: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.parts-row-category {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--primary-dark);
+}
+
+.parts-row-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+}
+
+.parts-row-meta {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    margin-bottom: 0.375rem;
+}
+
+.parts-row-number {
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-family: ui-monospace, monospace;
+}
+
+.parts-row-divider {
+    margin: 0 0.375rem;
+    color: var(--slate-300);
+}
+
+.parts-row-desc {
+    font-size: 0.875rem;
+    color: var(--slate-600);
+    line-height: 1.55;
+}
+
+.parts-row-action {
+    flex-shrink: 0;
+}
+
+.parts-row-action .btn {
+    white-space: nowrap;
+    font-size: 0.875rem;
+    padding: 0.625rem 1.125rem;
 }
 
 .parts-availability {
@@ -1508,52 +1597,6 @@ section {
 .parts-availability.order {
     color: #92400e;
     background: #fef3c7;
-}
-
-.parts-card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 0.25rem;
-    line-height: 1.35;
-}
-
-.parts-card-number {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--primary-dark);
-    font-family: ui-monospace, monospace;
-}
-
-.parts-card-manufacturer {
-    font-size: 0.8125rem;
-    color: var(--slate-500);
-    margin-bottom: 0.5rem;
-}
-
-.parts-card-desc {
-    font-size: 0.875rem;
-    color: var(--slate-600);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    flex: 1;
-}
-
-.parts-card-link {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--primary);
-    text-decoration: none;
-    margin-top: auto;
-}
-
-.parts-card-link:hover { color: var(--primary-dark); }
-
-.parts-card-hint {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--primary);
-    margin-top: auto;
 }
 
 .parts-inline-empty {

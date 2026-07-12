@@ -88,12 +88,18 @@
         <section class="parts-results-section">
             <div class="container">
                 <div class="parts-empty" id="partsEmpty">
-                    <div class="parts-browse" id="partsBrowse">
-                        <div class="parts-browse-header">
-                            <h2>Browse Our Catalog</h2>
-                            <p>Popular parts across automotive, energy, and industrial categories</p>
+                    <div class="parts-landing">
+                        <div class="parts-landing-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                            </svg>
                         </div>
-                        <div class="parts-grid parts-browse-grid" id="browseGrid"></div>
+                        <h2>Search parts by number or keyword</h2>
+                        <p>Look up items in our sourcing catalog and find matching suppliers across the web.</p>
+                        <div class="parts-suggestions">
+                            <span class="parts-suggestions-label">Popular searches</span>
+                            <div class="parts-suggestion-chips" id="suggestionChips"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -103,7 +109,7 @@
                             <h2>Our Catalog</h2>
                             <span class="parts-count" id="catalogCount">0 results</span>
                         </div>
-                        <div class="parts-grid" id="catalogResults"></div>
+                        <div class="parts-list" id="catalogResults"></div>
                     </div>
 
                     <div class="parts-results-block" id="webImagesBlock" hidden>

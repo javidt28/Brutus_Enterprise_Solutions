@@ -16,7 +16,7 @@ const webResultsBlock = document.getElementById('webResultsBlock');
 const webImagesBlock = document.getElementById('webImagesBlock');
 const webImages = document.getElementById('webImages');
 const webImagesCount = document.getElementById('webImagesCount');
-const browseGrid = document.getElementById('browseGrid');
+const suggestionChips = document.getElementById('suggestionChips');
 
 let catalog = [];
 
@@ -29,23 +29,28 @@ const categoryLabels = {
     digital: 'Digital Technologies',
 };
 
-const categoryFallbackImages = {
-    automotive: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&h=400&fit=crop',
-    'solar-hvac': 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop',
-    'ev-charging': 'https://images.unsplash.com/photo-1593941707882-a5bba14938b7?w=600&h=400&fit=crop',
-    'energy-storage': 'https://images.unsplash.com/photo-1611288588376-f28077be0ebf?w=600&h=400&fit=crop',
-    appliances: 'https://images.unsplash.com/photo-1571175443880-49d1ba25898a?w=600&h=400&fit=crop',
-    digital: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+const popularSearches = [
+    { label: 'Brake Pads', query: 'brake pads', category: 'automotive' },
+    { label: 'Solar Inverter', query: 'solar inverter', category: 'solar-hvac' },
+    { label: 'EV Charger', query: 'EV charger', category: 'ev-charging' },
+    { label: 'Battery Storage', query: 'energy storage', category: 'energy-storage' },
+    { label: 'D1212', query: 'D1212', category: 'automotive' },
+    { label: 'HVAC System', query: 'HVAC', category: 'solar-hvac' },
+];
+
+const categoryIcons = {
+    automotive: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14v-5H5v5z"/><path d="M5 12V7l7-4 7 4v5"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg>',
+    'solar-hvac': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg>',
+    'ev-charging': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+    'energy-storage': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><path d="M23 13v-2"/></svg>',
+    appliances: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+    digital: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
 };
 
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
-}
-
-function getPartImage(part) {
-    return part.image || categoryFallbackImages[part.category] || categoryFallbackImages.automotive;
 }
 
 function getFavicon(url) {
@@ -65,32 +70,51 @@ function formatUrl(url) {
     }
 }
 
-function buildCatalogCard(part, options = {}) {
-    const { clickable = false, compact = false } = options;
-    const image = getPartImage(part);
+function buildCatalogRow(part) {
     const availabilityClass = part.availability === 'In Stock' ? 'in-stock' : 'order';
+    const icon = categoryIcons[part.category] || categoryIcons.automotive;
 
-    const cardInner = `
-        <div class="parts-card-media">
-            <img src="${escapeHtml(image)}" alt="${escapeHtml(part.name)}" loading="lazy" onerror="this.src='${categoryFallbackImages[part.category] || categoryFallbackImages.automotive}'">
-            <span class="parts-category">${escapeHtml(categoryLabels[part.category] || part.category)}</span>
-        </div>
-        <div class="parts-card-body">
-            <div class="parts-card-top">
-                <p class="parts-card-number">Part # ${escapeHtml(part.partNumber)}</p>
-                <span class="parts-availability ${availabilityClass}">${escapeHtml(part.availability)}</span>
+    return `
+        <article class="parts-row">
+            <div class="parts-row-icon">${icon}</div>
+            <div class="parts-row-main">
+                <div class="parts-row-top">
+                    <span class="parts-row-category">${escapeHtml(categoryLabels[part.category] || part.category)}</span>
+                    <span class="parts-availability ${availabilityClass}">${escapeHtml(part.availability)}</span>
+                </div>
+                <h3 class="parts-row-title">${escapeHtml(part.name)}</h3>
+                <p class="parts-row-meta">
+                    <span class="parts-row-number">Part # ${escapeHtml(part.partNumber)}</span>
+                    <span class="parts-row-divider">·</span>
+                    <span>${escapeHtml(part.manufacturer)}</span>
+                </p>
+                <p class="parts-row-desc">${escapeHtml(part.description)}</p>
             </div>
-            <h3 class="parts-card-title">${escapeHtml(part.name)}</h3>
-            <p class="parts-card-manufacturer">${escapeHtml(part.manufacturer)}</p>
-            ${compact ? '<span class="parts-card-hint">Click to search →</span>' : `<p class="parts-card-desc">${escapeHtml(part.description)}</p><a href="index.html#contact" class="parts-card-link">Request Quote →</a>`}
-        </div>
+            <div class="parts-row-action">
+                <a href="index.html#contact" class="btn btn-secondary">Request Quote</a>
+            </div>
+        </article>
     `;
+}
 
-    if (clickable) {
-        return `<button type="button" class="parts-card parts-card-clickable" data-query="${escapeHtml(part.partNumber)}">${cardInner}</button>`;
-    }
+function renderSuggestions() {
+    if (!suggestionChips) return;
 
-    return `<article class="parts-card">${cardInner}</article>`;
+    suggestionChips.innerHTML = popularSearches.map(item => `
+        <button type="button" class="parts-chip" data-query="${escapeHtml(item.query)}" data-category="${escapeHtml(item.category)}">
+            ${escapeHtml(item.label)}
+        </button>
+    `).join('');
+
+    suggestionChips.querySelectorAll('.parts-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            partsQuery.value = chip.dataset.query;
+            if (chip.dataset.category) {
+                partsCategory.value = chip.dataset.category;
+            }
+            partsSearchForm.requestSubmit();
+        });
+    });
 }
 
 async function loadCatalog() {
@@ -100,20 +124,6 @@ async function loadCatalog() {
     } catch {
         catalog = [];
     }
-}
-
-function renderBrowseGrid() {
-    if (!browseGrid || catalog.length === 0) return;
-
-    const featured = catalog.slice(0, 8);
-    browseGrid.innerHTML = featured.map(part => buildCatalogCard(part, { clickable: true, compact: true })).join('');
-
-    browseGrid.querySelectorAll('.parts-card-clickable').forEach(btn => {
-        btn.addEventListener('click', () => {
-            partsQuery.value = btn.dataset.query;
-            partsSearchForm.requestSubmit();
-        });
-    });
 }
 
 function searchCatalog(query, category) {
@@ -142,7 +152,7 @@ function renderCatalogResults(results) {
         return;
     }
 
-    catalogResults.innerHTML = results.map(part => buildCatalogCard(part)).join('');
+    catalogResults.innerHTML = results.map(part => buildCatalogRow(part)).join('');
 }
 
 function renderWebImages(images) {
@@ -177,7 +187,7 @@ function renderWebResults(results) {
         return `
             <a class="parts-web-item" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
                 <div class="parts-web-thumb">
-                    ${favicon ? `<img src="${favicon}" alt="" loading="lazy">` : '<span class="parts-web-thumb-fallback">🌐</span>'}
+                    ${favicon ? `<img src="${favicon}" alt="" loading="lazy">` : '<span class="parts-web-thumb-fallback">↗</span>'}
                 </div>
                 <div class="parts-web-content">
                     <h3>${escapeHtml(item.title)}</h3>
@@ -292,8 +302,6 @@ function initFromUrl() {
     }
 }
 
-loadCatalog().then(() => {
-    renderBrowseGrid();
-    initFromUrl();
-});
+renderSuggestions();
+loadCatalog().then(initFromUrl);
 partsSearchForm.addEventListener('submit', handleSearch);
