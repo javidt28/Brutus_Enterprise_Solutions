@@ -35,7 +35,7 @@ const popularSearches = [
     { label: 'EV Charger', query: 'EV charger', category: 'ev-charging' },
     { label: 'Battery Storage', query: 'energy storage', category: 'energy-storage' },
     { label: 'D1212', query: 'D1212', category: 'automotive' },
-    { label: 'HVAC System', query: 'HVAC', category: 'solar-hvac' },
+    { label: 'MaintainHub', query: 'MaintainHub', category: 'digital' },
 ];
 
 const categoryIcons = {
