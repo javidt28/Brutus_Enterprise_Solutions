@@ -1588,6 +1588,208 @@ section {
     }
 }
 
+/* Careers Page */
+.careers-page {
+    padding-top: var(--nav-height);
+}
+
+.careers-hero {
+    padding: 3rem 0 2rem;
+    background: linear-gradient(180deg, var(--slate-50) 0%, var(--white) 100%);
+}
+
+.careers-values {
+    padding: 3rem 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--slate-200);
+}
+
+.careers-values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.careers-value-card {
+    padding: 1.75rem 1.5rem;
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-xl);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.careers-value-card:hover {
+    border-color: var(--primary-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.careers-value-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--primary-50);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.careers-value-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.careers-value-card h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.careers-value-card p {
+    font-size: 0.875rem;
+    color: var(--slate-600);
+    line-height: 1.65;
+}
+
+.careers-openings {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.careers-jobs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.careers-job {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-xl);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.careers-job:hover {
+    border-color: var(--primary-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.careers-job-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.careers-job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.careers-job-dept {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--primary-dark);
+}
+
+.careers-job-location {
+    font-size: 0.75rem;
+    color: var(--slate-500);
+}
+
+.careers-job h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.375rem;
+}
+
+.careers-job p {
+    font-size: 0.9375rem;
+    color: var(--slate-600);
+    line-height: 1.6;
+}
+
+.careers-job .btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.careers-cta {
+    background: var(--slate-50);
+    border-top: 1px solid var(--slate-200);
+    padding: 3.5rem 0;
+}
+
+.careers-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-2xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.careers-cta-inner h2 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.375rem;
+}
+
+.careers-cta-inner p {
+    color: var(--slate-500);
+    font-size: 1rem;
+    max-width: 520px;
+}
+
+@media (max-width: 1024px) {
+    .careers-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .careers-values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .careers-job {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .careers-job .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .careers-cta-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .careers-cta-inner .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 /* Parts Page */
 .parts-page { padding-top: var(--nav-height); }
 
