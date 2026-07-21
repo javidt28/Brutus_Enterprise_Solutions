@@ -2093,6 +2093,93 @@ section {
     padding: 0 !important;
 }
 
+.careers-apply {
+    background: var(--slate-50);
+    border-top: 1px solid var(--slate-200);
+    border-bottom: 1px solid var(--slate-200);
+}
+
+.careers-apply-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.careers-apply-intro .section-title {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.careers-apply-intro .section-label {
+    text-align: left;
+}
+
+.careers-apply-email {
+    margin-top: 1.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.careers-apply-email span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate-400);
+}
+
+.careers-apply-email a {
+    color: var(--primary-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.careers-apply-email a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.careers-apply-form {
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-2xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.careers-honeypot {
+    position: absolute;
+    left: -9999px;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.form-error {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-lg);
+    color: #991b1b;
+    font-size: 0.9375rem;
+}
+
+.form-error a {
+    color: #991b1b;
+    font-weight: 600;
+}
+
 @media (max-width: 1024px) {
     .careers-hero-grid {
         grid-template-columns: 1fr;
@@ -2105,6 +2192,11 @@ section {
 
     .careers-benefits-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .careers-apply-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 

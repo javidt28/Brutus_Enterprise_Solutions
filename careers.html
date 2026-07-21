@@ -56,7 +56,7 @@
                         <p class="careers-hero-subtitle">Join a lean, ambitious team building sustainable supply chains, energy solutions, and platforms like MaintainHub — with room to take on real responsibility from day one.</p>
                         <div class="careers-hero-actions">
                             <a href="#openings" class="btn btn-primary">View Open Roles</a>
-                            <a href="mailto:careers@brutusenterprise.com?subject=General%20Career%20Inquiry" class="btn btn-secondary">Send Your Resume</a>
+                            <a href="#apply" class="btn btn-secondary apply-role-btn" data-role="General Inquiry">Send Your Resume</a>
                         </div>
                         <div class="careers-hero-stats">
                             <div class="careers-hero-stat">
@@ -222,7 +222,7 @@
                                 <h3>Admin Assistant Intern</h3>
                                 <p>Support day-to-day office operations including scheduling, correspondence, document organization, and administrative tasks across our sourcing and technology teams.</p>
                             </div>
-                            <a href="mailto:careers@brutusenterprise.com?subject=Application:%20Admin%20Assistant%20Intern" class="btn btn-primary">Apply Now</a>
+                            <a href="#apply" class="btn btn-primary apply-role-btn" data-role="Admin Assistant Intern">Apply Now</a>
                         </div>
                         <div class="careers-job-body">
                             <div class="careers-job-detail">
@@ -257,7 +257,7 @@
                                 <h3>Software Engineer MaintainHub</h3>
                                 <p>Help build and improve MaintainHub, our CMMS platform for work orders, asset tracking, and multi-property maintenance operations.</p>
                             </div>
-                            <a href="mailto:careers@brutusenterprise.com?subject=Application:%20Software%20Engineer%20MaintainHub" class="btn btn-primary">Apply Now</a>
+                            <a href="#apply" class="btn btn-primary apply-role-btn" data-role="Software Engineer MaintainHub">Apply Now</a>
                         </div>
                         <div class="careers-job-body">
                             <div class="careers-job-detail">
@@ -284,6 +284,87 @@
             </div>
         </section>
 
+        <section class="careers-apply" id="apply">
+            <div class="container">
+                <div class="careers-apply-grid">
+                    <div class="careers-apply-intro">
+                        <span class="section-label">Apply</span>
+                        <h2 class="section-title">Submit Your Application</h2>
+                        <p class="section-subtitle" style="margin: 0; text-align: left; max-width: none;">Fill out the form and we'll receive your application by email. Include a short note about your background and why you're interested — you can also paste a link to your resume or LinkedIn.</p>
+                        <div class="careers-apply-email">
+                            <span>Prefer email?</span>
+                            <a href="mailto:info@brutusenterprise.com?subject=Career%20Application">info@brutusenterprise.com</a>
+                        </div>
+                    </div>
+
+                    <form class="careers-apply-form contact-form" id="careersApplyForm" novalidate>
+                        <div class="form-group">
+                            <label for="applyName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="applyName" name="name" required autocomplete="name" placeholder="Your full name">
+                            <span class="error-message" id="applyNameError"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="applyEmail">Email <span class="required">*</span></label>
+                                <input type="email" id="applyEmail" name="email" required autocomplete="email" placeholder="you@example.com">
+                                <span class="error-message" id="applyEmailError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="applyPhone">Phone</label>
+                                <input type="tel" id="applyPhone" name="phone" autocomplete="tel" placeholder="Optional">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applyRole">Position <span class="required">*</span></label>
+                            <select id="applyRole" name="position" required>
+                                <option value="">Select a role</option>
+                                <option value="Admin Assistant Intern">Admin Assistant Intern</option>
+                                <option value="Software Engineer MaintainHub">Software Engineer MaintainHub</option>
+                                <option value="General Inquiry">General Inquiry / Other</option>
+                            </select>
+                            <span class="error-message" id="applyRoleError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applyLink">Resume or LinkedIn URL</label>
+                            <input type="url" id="applyLink" name="resume_link" placeholder="https://linkedin.com/in/you or drive link">
+                            <span class="error-message" id="applyLinkError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applyMessage">Cover Note <span class="required">*</span></label>
+                            <textarea id="applyMessage" name="message" required maxlength="2000" placeholder="Tell us about your background and why you're interested in this role."></textarea>
+                            <span class="char-count" id="applyCharCount">0 / 2000 characters</span>
+                            <span class="error-message" id="applyMessageError"></span>
+                        </div>
+
+                        <input type="hidden" name="_subject" id="applySubject" value="Career Application — Brutus Enterprise Solutions">
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="careers-honeypot" aria-hidden="true">
+
+                        <button type="submit" class="btn btn-primary" id="applySubmitBtn">
+                            <span class="btn-text">Submit Application</span>
+                            <span class="btn-loader" style="display: none;" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="10"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <div class="form-success" id="applySuccess" style="display: none;" role="status">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Application sent. We'll review it and get back to you soon.</span>
+                        </div>
+                        <div class="form-error" id="applyError" style="display: none;" role="alert">
+                            <span>Something went wrong. Please email us directly at <a href="mailto:info@brutusenterprise.com">info@brutusenterprise.com</a>.</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <section class="careers-process">
             <div class="container">
                 <div class="section-header">
@@ -295,7 +376,7 @@
                     <div class="careers-process-step">
                         <div class="careers-process-number">01</div>
                         <h3>Apply</h3>
-                        <p>Email your resume and a brief note on why you're interested to <a href="mailto:careers@brutusenterprise.com">careers@brutusenterprise.com</a>.</p>
+                        <p>Submit the form above or email your resume and a brief note to <a href="mailto:info@brutusenterprise.com?subject=Career%20Application">info@brutusenterprise.com</a>.</p>
                     </div>
                     <div class="careers-process-step">
                         <div class="careers-process-number">02</div>
@@ -318,7 +399,7 @@
                         <h2>Don't see the right role?</h2>
                         <p>We're open to hearing from talented people in sourcing, energy, technology, and operations. Send your resume and we'll keep you in mind.</p>
                     </div>
-                    <a href="mailto:careers@brutusenterprise.com?subject=General%20Career%20Inquiry" class="btn btn-primary">Send Your Resume</a>
+                    <a href="#apply" class="btn btn-primary apply-role-btn" data-role="General Inquiry">Send Your Resume</a>
                 </div>
             </div>
         </section>
@@ -375,5 +456,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="careers.js"></script>
 </body>
 </html>
