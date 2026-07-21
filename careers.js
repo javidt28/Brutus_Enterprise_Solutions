@@ -1,5 +1,13 @@
 (function () {
     const CAREERS_EMAIL = 'info@brutusenterprise.com';
+    const MAX_RESUME_BYTES = 5 * 1024 * 1024;
+    const ALLOWED_RESUME_TYPES = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
+    const ALLOWED_RESUME_EXTENSIONS = ['.pdf', '.doc', '.docx'];
+
     const form = document.getElementById('careersApplyForm');
     if (!form) return;
 
@@ -7,6 +15,9 @@
     const emailInput = document.getElementById('applyEmail');
     const phoneInput = document.getElementById('applyPhone');
     const roleSelect = document.getElementById('applyRole');
+    const resumeInput = document.getElementById('applyResume');
+    const resumeNameEl = document.getElementById('applyResumeName');
+    const resumeClearBtn = document.getElementById('applyResumeClear');
     const linkInput = document.getElementById('applyLink');
     const messageInput = document.getElementById('applyMessage');
     const subjectInput = document.getElementById('applySubject');
@@ -64,13 +75,15 @@
     function showError(input, message) {
         input.classList.add('error');
         input.classList.remove('valid');
-        const error = input.parentElement.querySelector('.error-message');
+        const group = input.closest('.form-group') || input.parentElement;
+        const error = group.querySelector('.error-message');
         if (error) error.textContent = message || '';
     }
 
     function clearError(input) {
         input.classList.remove('error');
-        const error = input.parentElement.querySelector('.error-message');
+        const group = input.closest('.form-group') || input.parentElement;
+        const error = group.querySelector('.error-message');
         if (error) error.textContent = '';
     }
 
@@ -78,7 +91,55 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     }
 
+    function getResumeFile() {
+        return resumeInput.files && resumeInput.files[0] ? resumeInput.files[0] : null;
+    }
+
+    function hasAllowedResumeExtension(fileName) {
+        const lower = fileName.toLowerCase();
+        return ALLOWED_RESUME_EXTENSIONS.some((ext) => lower.endsWith(ext));
+    }
+
+    function updateResumeUI() {
+        const file = getResumeFile();
+        if (file) {
+            resumeNameEl.textContent = file.name;
+            resumeClearBtn.hidden = false;
+            resumeInput.classList.add('valid');
+            resumeInput.classList.remove('error');
+        } else {
+            resumeNameEl.textContent = 'Choose file';
+            resumeClearBtn.hidden = true;
+            resumeInput.classList.remove('valid', 'error');
+        }
+    }
+
+    function validateResume() {
+        clearError(resumeInput);
+        const file = getResumeFile();
+
+        if (!file) {
+            showError(resumeInput, 'Please upload your resume');
+            return false;
+        }
+
+        if (!hasAllowedResumeExtension(file.name) && !ALLOWED_RESUME_TYPES.includes(file.type)) {
+            showError(resumeInput, 'Upload a PDF or Word document (.pdf, .doc, .docx)');
+            return false;
+        }
+
+        if (file.size > MAX_RESUME_BYTES) {
+            showError(resumeInput, 'Resume must be 5 MB or smaller');
+            return false;
+        }
+
+        resumeInput.classList.add('valid');
+        return true;
+    }
+
     function validateField(input) {
+        if (input === resumeInput) return validateResume();
+
         const value = input.value.trim();
         clearError(input);
 
@@ -94,7 +155,6 @@
 
         if (input === linkInput && value) {
             try {
-                // Allow bare domains by requiring protocol
                 // eslint-disable-next-line no-new
                 new URL(value);
             } catch (_) {
@@ -106,6 +166,17 @@
         if (value) input.classList.add('valid');
         return true;
     }
+
+    resumeInput.addEventListener('change', () => {
+        updateResumeUI();
+        validateResume();
+    });
+
+    resumeClearBtn.addEventListener('click', () => {
+        resumeInput.value = '';
+        updateResumeUI();
+        clearError(resumeInput);
+    });
 
     [nameInput, emailInput, roleSelect, linkInput, messageInput].forEach((input) => {
         input.addEventListener('blur', () => validateField(input));
@@ -123,10 +194,13 @@
             `Email: ${data.email}`,
             `Phone: ${data.phone || 'N/A'}`,
             `Position: ${data.position}`,
-            `Resume / LinkedIn: ${data.resume_link || 'N/A'}`,
+            `LinkedIn / Portfolio: ${data.resume_link || 'N/A'}`,
+            `Resume file: ${data.resume_name || 'Attached separately'}`,
             '',
             'Cover note:',
-            data.message
+            data.message,
+            '',
+            '(Please attach your resume to this email before sending.)'
         ].join('\n');
     }
 
@@ -142,23 +216,24 @@
 
     async function submitApplication(data) {
         const endpoint = `https://formsubmit.co/ajax/${CAREERS_EMAIL}`;
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('email', data.email);
+        formData.append('phone', data.phone || 'N/A');
+        formData.append('position', data.position);
+        formData.append('linkedin_or_portfolio', data.resume_link || 'N/A');
+        formData.append('message', data.message);
+        formData.append('_subject', `Career Application: ${data.position} — Brutus Enterprise Solutions`);
+        formData.append('_template', 'table');
+        formData.append('_captcha', 'false');
+        formData.append('attachment', data.resume_file, data.resume_file.name);
+
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
                 Accept: 'application/json'
             },
-            body: JSON.stringify({
-                name: data.name,
-                email: data.email,
-                phone: data.phone || 'N/A',
-                position: data.position,
-                resume_link: data.resume_link || 'N/A',
-                message: data.message,
-                _subject: `Career Application: ${data.position} — Brutus Enterprise Solutions`,
-                _template: 'table',
-                _captcha: 'false'
-            })
+            body: formData
         });
 
         if (!response.ok) {
@@ -176,22 +251,28 @@
         e.preventDefault();
         successEl.style.display = 'none';
         errorEl.style.display = 'none';
+        successEl.querySelector('span').textContent =
+            "Application sent. We'll review it and get back to you soon.";
 
         const fields = [nameInput, emailInput, roleSelect, messageInput];
         let valid = true;
         fields.forEach((field) => {
             if (!validateField(field)) valid = false;
         });
+        if (!validateResume()) valid = false;
         if (linkInput.value.trim() && !validateField(linkInput)) valid = false;
         if (!valid) return;
 
+        const resumeFile = getResumeFile();
         const data = {
             name: nameInput.value.trim(),
             email: emailInput.value.trim(),
             phone: phoneInput.value.trim(),
             position: roleSelect.value,
             resume_link: linkInput.value.trim(),
-            message: messageInput.value.trim()
+            message: messageInput.value.trim(),
+            resume_file: resumeFile,
+            resume_name: resumeFile ? resumeFile.name : ''
         };
 
         submitBtn.disabled = true;
@@ -202,19 +283,19 @@
             await submitApplication(data);
             form.reset();
             updateSubject();
+            updateResumeUI();
             charCount.textContent = '0 / 2000 characters';
-            [nameInput, emailInput, phoneInput, roleSelect, linkInput, messageInput].forEach((input) => {
+            [nameInput, emailInput, phoneInput, roleSelect, resumeInput, linkInput, messageInput].forEach((input) => {
                 input.classList.remove('valid', 'error');
             });
             successEl.style.display = 'flex';
             successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } catch (err) {
-            // Fallback: open the user's email client with a prefilled message
             openMailtoFallback(data);
             errorEl.style.display = 'none';
             successEl.style.display = 'flex';
             successEl.querySelector('span').textContent =
-                'Opening a Gmail draft with your application. Send it to finish, or email info@brutusenterprise.com directly.';
+                'Opening a Gmail draft with your details. Please attach your resume file before sending, or email info@brutusenterprise.com directly.';
         } finally {
             submitBtn.disabled = false;
             btnText.style.display = 'inline';

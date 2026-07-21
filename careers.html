@@ -290,7 +290,7 @@
                     <div class="careers-apply-intro">
                         <span class="section-label">Apply</span>
                         <h2 class="section-title">Submit Your Application</h2>
-                        <p class="section-subtitle" style="margin: 0; text-align: left; max-width: none;">Fill out the form and we'll receive your application by email. Include a short note about your background and why you're interested — you can also paste a link to your resume or LinkedIn.</p>
+                        <p class="section-subtitle" style="margin: 0; text-align: left; max-width: none;">Fill out the form, upload your resume, and we'll receive your application by email. You can also include a LinkedIn or portfolio link.</p>
                         <div class="careers-apply-email">
                             <span>Prefer email?</span>
                             <a href="mailto:info@brutusenterprise.com?subject=Career%20Application">info@brutusenterprise.com</a>
@@ -329,8 +329,24 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="applyLink">Resume or LinkedIn URL</label>
-                            <input type="url" id="applyLink" name="resume_link" placeholder="https://linkedin.com/in/you or drive link">
+                            <label for="applyResume">Resume <span class="required">*</span></label>
+                            <div class="careers-file-upload">
+                                <input type="file" id="applyResume" name="attachment" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+                                <label for="applyResume" class="careers-file-label">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    <span class="careers-file-text">
+                                        <strong id="applyResumeName">Choose file</strong>
+                                        <small>PDF or Word · Max 5 MB</small>
+                                    </span>
+                                </label>
+                                <button type="button" class="careers-file-clear" id="applyResumeClear" hidden aria-label="Remove resume">Remove</button>
+                            </div>
+                            <span class="error-message" id="applyResumeError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applyLink">LinkedIn or Portfolio URL</label>
+                            <input type="url" id="applyLink" name="resume_link" placeholder="https://linkedin.com/in/you (optional)">
                             <span class="error-message" id="applyLinkError"></span>
                         </div>
 

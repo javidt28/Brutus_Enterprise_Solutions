@@ -2156,6 +2156,95 @@ section {
     box-shadow: var(--shadow-sm);
 }
 
+.careers-file-upload {
+    position: relative;
+}
+
+.careers-file-upload input[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.careers-file-label {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem 1.125rem;
+    border: 1.5px dashed var(--slate-300);
+    border-radius: var(--radius-lg);
+    background: var(--slate-50);
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.careers-file-upload:hover .careers-file-label,
+.careers-file-upload input[type="file"]:focus-visible + .careers-file-label {
+    border-color: var(--primary);
+    background: var(--primary-50);
+    box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.careers-file-upload input[type="file"].error + .careers-file-label {
+    border-color: #dc2626;
+    background: #fef2f2;
+}
+
+.careers-file-upload input[type="file"].valid + .careers-file-label {
+    border-color: var(--primary);
+    border-style: solid;
+    background: var(--primary-50);
+}
+
+.careers-file-label svg {
+    width: 22px;
+    height: 22px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.careers-file-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.careers-file-text strong {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.careers-file-text small {
+    font-size: 0.75rem;
+    color: var(--slate-500);
+}
+
+.careers-file-clear {
+    margin-top: 0.5rem;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--slate-500);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.careers-file-clear:hover {
+    color: #dc2626;
+}
+
 .careers-honeypot {
     position: absolute;
     left: -9999px;
