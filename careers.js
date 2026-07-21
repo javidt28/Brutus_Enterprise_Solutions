@@ -197,8 +197,8 @@
             `LinkedIn / Portfolio: ${data.resume_link || 'N/A'}`,
             `Resume file: ${data.resume_name || 'Attached separately'}`,
             '',
-            'Cover note:',
-            data.message,
+            data.message ? 'Cover note:' : 'Cover note: (none)',
+            data.message || '',
             '',
             '(Please attach your resume to this email before sending.)'
         ].join('\n');
@@ -254,7 +254,7 @@
         successEl.querySelector('span').textContent =
             "Application sent. We'll review it and get back to you soon.";
 
-        const fields = [nameInput, emailInput, roleSelect, messageInput];
+        const fields = [nameInput, emailInput, roleSelect];
         let valid = true;
         fields.forEach((field) => {
             if (!validateField(field)) valid = false;
@@ -270,7 +270,7 @@
             phone: phoneInput.value.trim(),
             position: roleSelect.value,
             resume_link: linkInput.value.trim(),
-            message: messageInput.value.trim(),
+            message: messageInput.value.trim() || 'N/A',
             resume_file: resumeFile,
             resume_name: resumeFile ? resumeFile.name : ''
         };
