@@ -2162,18 +2162,22 @@ section {
 
 .careers-file-upload input[type="file"] {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
     opacity: 0;
-    cursor: pointer;
-    z-index: 2;
 }
 
-.careers-file-label {
+.careers-file-upload .careers-file-label {
     display: flex;
     align-items: center;
     gap: 0.875rem;
+    margin-bottom: 0;
     padding: 1rem 1.125rem;
     border: 1.5px dashed var(--slate-300);
     border-radius: var(--radius-lg);
@@ -2182,7 +2186,7 @@ section {
     transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
 }
 
-.careers-file-upload:hover .careers-file-label,
+.careers-file-upload .careers-file-label:hover,
 .careers-file-upload input[type="file"]:focus-visible + .careers-file-label {
     border-color: var(--primary);
     background: var(--primary-50);
@@ -2200,11 +2204,16 @@ section {
     background: var(--primary-50);
 }
 
-.careers-file-label svg {
+.careers-file-upload .careers-file-label svg {
     width: 22px;
     height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    max-width: 22px;
+    max-height: 22px;
     color: var(--primary);
-    flex-shrink: 0;
+    flex: 0 0 22px;
+    display: block;
 }
 
 .careers-file-text {
