@@ -133,7 +133,11 @@
     function openMailtoFallback(data) {
         const subject = encodeURIComponent(`Career Application: ${data.position}`);
         const body = encodeURIComponent(buildMailtoBody(data));
-        window.location.href = `mailto:${CAREERS_EMAIL}?subject=${subject}&body=${body}`;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CAREERS_EMAIL)}&su=${subject}&body=${body}`;
+        const opened = window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+        if (!opened) {
+            window.location.href = `mailto:${CAREERS_EMAIL}?subject=${subject}&body=${body}`;
+        }
     }
 
     async function submitApplication(data) {
